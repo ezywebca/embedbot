@@ -15,7 +15,7 @@ discord:
 
 express:
   port: 7000
-  graphiql: false
+  graphiql: true
 
   rateLimit:
     windowMs: 900000
