@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach",
+      "restart": true,
+      "timeout": 9999999999999999999999,
+      "port": 9229
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Start",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["start"],
+      "port": 9229,
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "openOnSessionStart",
+      "autoAttachChildProcesses": true,
+      "timeout": 60000
+    }
+  ],
+  "compounds": []
+}

@@ -1,0 +1,44 @@
+# CONFIGURATION DEFAULTS
+
+# !!! DO NOT EDIT !!!
+# Copy `config.example.yml` to `config.yml` and edit that one instead.
+# You can also copy over things from here to your `config.yml` and edit them there.
+
+database:
+  dir: ./data/database/
+
+discord:
+  events: {}
+  webhook: 'WidgetBot.io Chat'
+  statuses: []
+  admins: []
+
+express:
+  port: 7000
+  graphiql: false
+
+  rateLimit:
+    windowMs: 900000
+    max: 1000
+    delayAfter: 100
+    delayMs: 10
+
+embed:
+  theme:
+    colors:
+      primary: '#fff'
+      accent: '#7289da'
+      background: '#36393E'
+    css: ''
+
+  config:
+    avatar: identicon
+    notifications: null
+
+cache:
+  graphql.messageHistory: 50
+  graphql.messageHistoryExpiration: 20m
+  graphql.channelsExpiration: 10s
+  graphql.permissionsExpiration: 10s
+
+log_level: info

@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "scripts/webpack/production/files/package.json"
+      ]
+    }
+  }
+}

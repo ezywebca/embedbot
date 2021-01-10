@@ -1,0 +1,247 @@
+type Query {
+  "The discord server to query"
+  server(id: String): Server
+  "Bot statistics"
+  stats: Stats
+  "Bot invite URL"
+  invite: String!
+}
+
+type Server {
+  "The name of the server"
+  name: String!
+  "Discord invite for the server"
+  invite: String
+  "Amount of members in the server"
+  memberCount: Int!
+  #"Members in the server"
+  #members: [Member]
+  "The servers icon"
+  icon: String!
+  "Fetches all the channels on the server"
+  channels: [Channels]
+  "Query a channel"
+  channel(id: String): Channel
+  "Theme for the server"
+  theme: Theme
+}
+
+type Stats {
+  "Total amount of servers the bot is in"
+  totalServers: Int
+  "Total amount of members across all the servers the bot is in"
+  totalMembers: Int
+
+  "Total amount of guests that have sent messages"
+  totalGuests: Int
+  "Total amount of messages all guests have sent"
+  totalMessages: Int
+  "Total amount of online guests (socket.io count)"
+  onlineGuests: Int!
+
+  "Stats for the in-memory cache engine"
+  cache: Cache
+}
+
+type Cache {
+  "Total amount of cached servers"
+  totalServers: Int!
+  "Total amouont of cached channels"
+  totalChannels: Int!
+  "Total amount of cached messages"
+  totalMessages: Int!
+}
+
+type Member {
+  name: String!
+  "Member's type: member, bot, guest"
+  type: String!
+  "Member's avatar"
+  avatar: String
+  "Member's ID"
+  id: String!
+  "Member's final role color"
+  color: String!
+  "Member's roles"
+  roles: [Role]
+}
+
+type Theme {
+  colors: Colors
+  css: String
+}
+
+type Colors {
+  primary: String!
+  accent: String!
+  background: String!
+}
+
+type Channels {
+  "The channel name"
+  name: String!
+  "The channel ID"
+  id: String!
+  "The channel category"
+  category: String
+  "The permissions the guest has on the channel"
+  permissions: Permissions!
+}
+
+type Channel {
+  "The channel name"
+  name: String!
+  "The channel topic"
+  topic: String
+  "Fetches messages from the channel"
+  messages: [Message]
+  "The permissions the guest has on the channel"
+  permissions: Permissions!
+}
+
+type Message {
+  "Message ID"
+  id: String!
+  "Message author"
+  author: Author
+  "Message timestamp"
+  timestamp: Float!
+  "Message contents"
+  content: String
+  "Message embeds"
+  embeds: [Embed]
+  "Time of edit"
+  editedAt: Float
+  "Message type"
+  type: String!
+  "Message reactions"
+  reactions: [Reaction]
+  "Message attachments"
+  attachment: Attachment
+  "Message mentions"
+  mentions: Mentions
+}
+
+type Permissions {
+  CREATE_INSTANT_INVITE: Boolean
+  ADD_REACTIONS: Boolean
+  SEND_MESSAGES: Boolean
+  SEND_TTS_MESSAGES: Boolean
+  EMBED_LINKS: Boolean
+  ATTACH_FILES: Boolean
+  READ_MESSAGE_HISTORY: Boolean
+  MENTION_EVERYONE: Boolean
+  USE_EXTERNAL_EMOJIS: Boolean
+  CHANGE_NICKNAME: Boolean
+}
+
+type Author {
+  name: String
+  type: String!
+  avatar: String
+  id: String!
+  color: String!
+  roles: [Role]
+}
+
+type Role {
+  color: String!
+  position: Int!
+  name: String!
+}
+
+type Embed {
+  color: Int
+  fields: [EmbedField]
+  footer: EmbedFooter
+  thumbnail: EmbedThumbnail
+  author: EmbedAuthor
+  image: EmbedImage
+  provider: EmbedProvider
+  video: EmbedVideo
+  title: String
+  type: String!
+  description: String
+  url: String
+  timestamp: String
+}
+
+type EmbedField {
+  value: String
+  name: String
+  inline: Boolean
+}
+
+type EmbedAuthor {
+  name: String
+  url: String
+  iconURL: String
+}
+
+type EmbedFooter {
+  iconURL: String
+  proxyIconUrl: String
+  text: String
+}
+
+type EmbedThumbnail {
+  height: Int
+  width: Int
+  proxyURL: String
+  url: String
+}
+
+type EmbedImage {
+  height: Int
+  width: Int
+  proxyURL: String
+  url: String
+}
+
+type EmbedProvider {
+  name: String
+  url: String
+}
+
+type EmbedVideo {
+  height: Int
+  width: Int
+  url: String
+}
+
+type Reaction {
+  id: String
+  name: String
+  count: Int
+}
+
+type Attachment {
+  url: String
+  height: String
+  width: String
+}
+
+type Mentions {
+  channels: [ChannelMention]
+  members: [MemberMention]
+  roles: [RoleMention]
+  everyone: Boolean!
+}
+
+type ChannelMention {
+  name: String!
+  id: String!
+}
+
+type MemberMention {
+  name: String!
+  id: String!
+  roles: [Role]
+  avatar: String
+}
+
+type RoleMention {
+  name: String!
+  color: String!
+  id: String!
+}

@@ -1,0 +1,30 @@
+#################################################
+#     Find detailed documentation over at ↓     #
+# https://docs.widgetbot.io/self-hosted/config/ #
+#################################################
+
+# COPY THIS FILE BEFORE EDITING TO `config.yml`
+
+database:
+  jwt_secret: ''  # REQUIRED add long random string here for some encryption (DON'T share that string with anyone and don't add it to Git)
+
+discord:
+  token: ''  # REQUIRED add your Discord Bot's Token here
+
+  events:
+    logs:   ['server-id', 'channel-id']  # TODO decide where to send server activity messages to (currently only guild create/delete)
+    status: ['server-id', 'channel-id']  # TODO decide where to send server up/down status messages to
+
+  statuses:
+    - ${shard} • ${visitorCount} visitors
+    - Discord on your website • ${shard}
+    - ${shard} • ${accountCount} accounts
+    - ${shard} • ${messageCount} messages
+    - ${shard} • ${guildCount} guilds
+
+  admins:  # TODO add your admins and remove entries you don't use
+    - 'admin-id-1'
+    - 'admin-id-2'
+
+express:
+  port: 7000

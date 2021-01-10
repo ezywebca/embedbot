@@ -1,0 +1,11 @@
+/dist/**/*
+/data/**/*
+!/data/README.md
+!/data/config.base.yml
+!/data/config.example.yml
+
+/doc
+
+node_modules
+*.log
+.build

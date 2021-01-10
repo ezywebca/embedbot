@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "outDir": "./dist/",
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "lib": ["es6", "esnext"],
+    "types": ["jest"],
+    "experimentalDecorators": true,
+    "rootDir": "src",
+    "paths": {
+      "logger": ["src/modules/logger.ts"],
+      "config": ["src/modules/config.ts"],
+      "stateful": ["src/modules/stateful.ts"],
+      "paths": ["src/modules/paths.ts"],
+
+      "server-api/*": ["src/server-api/*"],
+      "server-api": ["src/server-api/index.ts"],
+
+      "engine/*": ["src/engine/*"],
+      "engine": ["src/engine/index.ts"],
+
+      "socket-io/*": ["src/socket-io/*"],
+      "socket-io": ["src/socket-io/index.ts"],
+
+      "app": ["src/controllers/app.ts"],
+      "app/*": ["src/controllers/express/*"],
+
+      "database": ["src/controllers/database.ts"],
+      "database/*": ["src/database/*"]
+    }
+  }
+}
